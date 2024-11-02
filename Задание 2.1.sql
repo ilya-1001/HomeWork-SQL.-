@@ -21,7 +21,10 @@ VALUES ('Anarchy in the U.K.', 212, 1), ('Holidays in the Sun', 202, 1),
 	   ('I’m Like a Bird', 243, 2), ('My Love Grows Deeper', 261, 2),
 	   ('Champion of the World', 257, 3), ('Everyday Life', 258, 3),
 	   ('Main Title and Anatomy of a Murder', 236, 4), 
-	   ('Beautiful Love', 305, 5), ('Buffalo Soldier', 256, 6);
+	   ('Beautiful Love', 305, 5), ('Buffalo Soldier', 256, 6),
+	   ('myself', 50, 1), ('by myself', 102, 1), ('bemy self', 70, 2), 
+	   ('myself by', 201, 2), ('by myself by', 107, 3), ('beemy', 154, 4), 
+	   ('premyne', 129, 5), ('my', 140, 2), ('мой sql', 20, 1);
 
 INSERT INTO collection (name, release_year)
 VALUES ('Collection vol.1', 1980), ('Collection vol.2', 2021),
@@ -30,6 +33,7 @@ VALUES ('Collection vol.1', 1980), ('Collection vol.2', 2021),
 	   ('Collection vol.7', 2015), ('Collection vol.8', 2023);
 
 INSERT INTO collection_track (collection_id, track_id)
-VALUES (1,1), (1,2), (2,3), (2,4), (3,7), (3,8), (4,1), (4,7),
-	   (5,5), (5,6), (6,7), (6,9), (7,3), (7,5), (8,1), (8,7), (8,9);
+VALUES (1,1), (1,2), (2,3), (2,4), (3,7), (3,8), (4,1), (4,7), (8,18),
+	   (5,5), (5,6), (6,7), (6,9), (7,3), (7,5), (8,1), (8,7), (8,9),
+	   (1,10), (1,11), (5,12), (3,13), (4,14), (8,15), (6,16), (7,17);
 	
