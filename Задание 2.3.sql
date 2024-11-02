@@ -4,27 +4,45 @@ SELECT g."name" , count(executor_id)
          on g.id = ge.genre_id 
    GROUP BY g."name"; 
 
-SELECT a."name" , a.release_year , count(t.id) 
-  FROM album a 
-       JOIN track t 
-         ON a.id = t.id 
-      WHERE a.release_year BETWEEN 2019 and 2020
-   GROUP BY a."name", a.release_year; 
+--SELECT a."name" , a.release_year , count(t.id) 
+  --FROM album a 
+       --JOIN track t 
+         --ON a.id = t.id 
+      --WHERE a.release_year BETWEEN 2019 and 2020
+   --GROUP BY a."name", a.release_year; 
 
+SELECT count(t.id)
+  FROM track t 
+  	   JOIN album a 
+  	     ON a.id = t.id 
+  	  WHERE a.release_year BETWEEN 2019 AND 2020;
+  
 SELECT a."name" , AVG(t.id) 
   FROM album a 
        JOIN track t 
          ON a.id = t.album_id 
    GROUP BY a."name"; 
 
+--SELECT e."name" 
+  --FROM executor e 
+       --JOIN executor_album ea 
+         --ON e.id = ea.executor_id 
+       --JOIN album a 
+         --ON a.id = ea.album_id
+      --WHERE a.release_year != 2020;
+
 SELECT e."name" 
   FROM executor e 
-       JOIN executor_album ea 
-         ON e.id = ea.executor_id 
-       JOIN album a 
-         ON a.id = ea.album_id
-      WHERE a.release_year != 2020;
-
+ WHERE e."name" NOT IN 
+       (SELECT e2."name" 
+        FROM executor e2
+             JOIN executor_album ea 
+             ON e2.id = ea.executor_id
+             JOIN album a
+             ON a.id = ea.album_id
+             WHERE a.release_year = 2020); 
+ 
+ 
 SELECT c."name" 
   FROM collection c
        JOIN collection_track ct 
