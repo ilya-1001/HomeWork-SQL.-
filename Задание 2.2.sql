@@ -15,7 +15,26 @@ SELECT name
   FROM executor e 
  WHERE name NOT LIKE '% %';
 
-SELECT name 
+--SELECT name 
+  --FROM track t 
+ --WHERE name ILIKE '%my%' OR name LIKE '%мой%';
+
+SELECT t."name" 
   FROM track t 
- WHERE name LIKE '%my%' OR name LIKE '%мой%';
+ WHERE t."name" ILIKE 'my %'
+    OR t."name" ILIKE '% my'
+    OR t."name" ILIKE '% my %'
+    OR t."name" ILIKE 'my'
+    OR t."name" ILIKE 'мой %'
+    OR t."name" ILIKE '% мой'
+    OR t."name" ILIKE '% мой %'
+    OR t."name" ILIKE 'мой';
+    
+SELECT t."name" 
+  FROM track t
+ WHERE string_to_array(lower(t."name"), ' ') && array ['my', 'мой'];
+ 
+SELECT t."name" 
+  FROM track t 
+ WHERE t."name" ~* '\mmy\M' or t."name" ~* '\mмой\M';
 	
